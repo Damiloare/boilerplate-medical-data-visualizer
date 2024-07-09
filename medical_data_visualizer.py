@@ -18,7 +18,9 @@ def draw_cat_plot():
     df_cat = df_cat = df.melt(id_vars = 'cardio',  value_vars = ['cholesterol', 'gluc', 'smoke', 'alco', 'active', 'overweight'], 
                      value_name ='value')
     # 6
-    df_cat = None
+    df_cat = df_cat = pd.DataFrame({'total':df_cat.groupby(['cardio', 'variable'])['value'].value_counts()})\
+                                     .rename(columns = {'cardio':'Cardio','variable':'Variable', 'value':'Value'})\
+                                     .reset_index()
     
 
     # 7
